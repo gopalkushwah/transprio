@@ -8,6 +8,7 @@ import PayForTicket from '../components/PayForTicket';
 import fonts from '../constants/fonts';
 import HelpAndSupport from '../components/HelpAndSupport';
 import SendMessage from '../components/SendMessage';
+import CustomMapView from '../components/CustomMapView';
 const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
@@ -50,6 +51,16 @@ const AppNavigator = () => {
               name='SendMessage'
               options={{
                 headerTitle:'Send Message',
+                headerTitleStyle:{
+                  fontFamily: fonts.PoppinsMedium
+                }
+              }}
+            ></Stack.Screen>
+            <Stack.Screen 
+              component={CustomMapView} 
+              name='CustomMapView'
+              options={{
+                headerTitle:'Map',
                 headerTitleStyle:{
                   fontFamily: fonts.PoppinsMedium
                 }
