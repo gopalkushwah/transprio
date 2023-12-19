@@ -4,8 +4,10 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import fonts from '../constants/fonts';
 import Divider from '../components/common/Divider';
+import { useNavigation } from '@react-navigation/native';
 
 const CustomDrawer = () => {
+    const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ScrollView
@@ -33,7 +35,7 @@ const CustomDrawer = () => {
         </View>
         <Divider height={7}></Divider>
         <View style={styles.secondSection}>
-            <SecondSectionButton title={'Support'} iconName={'contact-support'} iconSize={25}/>
+            <SecondSectionButton title={'Support'} iconName={'contact-support'} iconSize={25} handler={()=>navigation.navigate('HelpAndSupport')}/>
             <SecondSectionButton title={'Change Language'} iconName={'language'} iconSize={25}/>
             <SecondSectionButton title={'Change City'} iconName={'not-listed-location'} iconSize={25}/>
         </View>
@@ -47,22 +49,17 @@ const CustomDrawer = () => {
                 <TouchableOpacity activeOpacity={0.7} style={{backgroundColor:'blue',width:35,height:35,borderRadius:4,alignItems:'center',justifyContent:'center'}}>
                     <Icons name='facebook' color={'white'} size={20}></Icons>
                 </TouchableOpacity>
-                
                 <TouchableOpacity activeOpacity={0.7} style={{backgroundColor:'#008fff',padding :5,borderRadius:4,marginLeft:20,width:35,height:35,alignItems:'center',justifyContent:'center'}}>
                     <Icon name='twitter' color={'white'} size={20}></Icon>
-                    {/* <Text style={{color:'white',fontFamily: fonts.PoppinsBold,fontSize:18}}>X</Text> */}
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={0.7} style={{backgroundColor:'red',padding :5,borderRadius:4,marginLeft:20,width:35,height:35,alignItems:'center',justifyContent:'center'}}>
                     <Icon name='youtube' color={'white'} size={20}></Icon>
-                    {/* <Text style={{color:'white',fontFamily: fonts.PoppinsBold,fontSize:18}}>X</Text> */}
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={0.7} style={{backgroundColor:'#008fff',padding :5,borderRadius:4,marginLeft:20,width:35,height:35,alignItems:'center',justifyContent:'center'}}>
                     <Icon name='linkedin' color={'white'} size={20}></Icon>
-                    {/* <Text style={{color:'white',fontFamily: fonts.PoppinsBold,fontSize:18}}>X</Text> */}
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={0.7} style={{backgroundColor:'#E74292',padding :5,borderRadius:4,marginLeft:20,width:35,height:35,alignItems:'center',justifyContent:'center'}}>
                     <Icon name='instagram' color={'white'} size={20}></Icon>
-                    {/* <Text style={{color:'white',fontFamily: fonts.PoppinsBold,fontSize:18}}>X</Text> */}
                 </TouchableOpacity>
             </View>
         </View>
@@ -72,7 +69,15 @@ const CustomDrawer = () => {
 }
 
 const SecondSectionButton = ({title,handler,iconSize, iconName})=>{
-    return <TouchableOpacity activeOpacity={0.7} style={{flexDirection:'row',alignItems:'center',padding:10,marginVertical:5}}>
+    return <TouchableOpacity
+        activeOpacity={0.7} 
+        onPress={handler}
+        style={{
+            flexDirection:'row',
+            alignItems:'center',
+            padding:10,
+            marginVertical:5
+        }}>
         <Icons name={iconName} color={'black'} size={iconSize}></Icons>
         <Text style={styles.secondSectionBtnText}>{title}</Text>
     </TouchableOpacity>

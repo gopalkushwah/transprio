@@ -6,6 +6,8 @@ import Parent from '../components/Parent';
 import Home from '../components/Home';
 import PayForTicket from '../components/PayForTicket';
 import fonts from '../constants/fonts';
+import HelpAndSupport from '../components/HelpAndSupport';
+import SendMessage from '../components/SendMessage';
 const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
@@ -28,6 +30,26 @@ const AppNavigator = () => {
               name='PayForTicket'
               options={{
                 headerTitle:'Select Trip',
+                headerTitleStyle:{
+                  fontFamily: fonts.PoppinsMedium
+                }
+              }}
+            ></Stack.Screen>
+            <Stack.Screen 
+              component={HelpAndSupport} 
+              name='HelpAndSupport'
+              options={{
+                headerTitle:'Help And Support',
+                headerTitleStyle:{
+                  fontFamily: fonts.PoppinsMedium
+                }
+              }}
+            ></Stack.Screen>
+            <Stack.Screen 
+              component={SendMessage} 
+              name='SendMessage'
+              options={{
+                headerTitle:'Send Message',
                 headerTitleStyle:{
                   fontFamily: fonts.PoppinsMedium
                 }
