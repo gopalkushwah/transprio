@@ -10,6 +10,59 @@ import NearestBusStop from './NearestBusStop';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
+const markers = [
+  {
+    latitude: 23.24914,
+    longitude: 77.4686649,
+    title: 'Piplani Petrol Pump',
+    description : 'Bus is at Piplani Petrol Pump'
+  },
+  {
+    latitude: 23.2512561,
+    longitude: 77.4760726,
+    title: 'Anand Nagar',
+    description : 'Bus is at Anand Nagar'
+  },
+  {
+    latitude: 23.2552163,
+    longitude: 77.4197548,
+    title: 'Ashoka Garden',
+    description : 'Bus is at Ashoka Garden'
+  },
+  {
+    latitude: 23.2502469,
+    longitude: 77.4761707,
+    title: 'Ratnagiri Bypass',
+    description : 'Bus is at Ratnagiri Bypass'
+  },
+  {
+    latitude: 23.2629936,
+    longitude: 77.5133828,
+    title: 'Kokta bypass',
+    description : 'Bus is at Kokta bypass'
+  },
+  {
+    latitude: 23.2512042,
+    longitude: 77.5221699,
+    title: 'LNCT - institute of technology',
+    description : 'Bus is at LNCT - institute of technology'
+  },
+  {
+    latitude: 23.2531076,
+    longitude: 77.4162245,
+    title: 'Oriental institute of technology',
+    description : 'Bus is at Oriental institute of technology'
+  },
+  {
+    latitude: 23.2568615,
+    longitude: 77.505888,
+    title: 'Trinity institute of technology & research bhopal',
+    description : 'Bus is at Trinity institute of technology & research bhopal'
+  },
+
+]
+
+
 const Home = () => {
   const navigation = useNavigation();
   return (
@@ -25,34 +78,29 @@ const Home = () => {
           style={{ width: '100%', height: Dimensions.get('window').height/3.5 ,borderRadius:10,backgroundColor:'white',elevation:5}}
           onPress={() => navigation.navigate("CustomMapView")}
           initialRegion={{
-            latitude: 30.733115,
-            longitude: 76.779419,
+            latitude: 23.24914,
+            longitude: 77.4686649,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
 
           }}
           provider={PROVIDER_GOOGLE}
         >
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 30.733115,
-              longitude: 76.779419,
-            }}
-            onDragEnd={(e) => Alert.alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title='Test Marker'
-            description='This is a description'
-          ></Marker>
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 30.945454,
-              longitude: 76.5464,
-            }}
-            onDragEnd={(e) => Alert.alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title='Test Marker'
-            description='This is a description'
-          ></Marker>
+          {
+            markers.map((item,index)=>{
+              return <Marker
+                key={index}
+                draggable
+                coordinate={{
+                  latitude: item.latitude,
+                  longitude: item.longitude,
+                }}
+                onDragEnd={(e) => Alert.alert(JSON.stringify(e.nativeEvent.coordinate))}
+                title={item.title}
+                description={item.description}
+            ></Marker>
+            })
+          }
         </MapView>
       </View>
     </ScrollView>

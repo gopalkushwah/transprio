@@ -9,6 +9,8 @@ import fonts from '../constants/fonts';
 import HelpAndSupport from '../components/HelpAndSupport';
 import SendMessage from '../components/SendMessage';
 import CustomMapView from '../components/CustomMapView';
+import SearchBus from '../components/SearchBus';
+import CurrentLocationOfBus from '../components/CurrentLocationOfBus';
 const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
@@ -61,6 +63,26 @@ const AppNavigator = () => {
               name='CustomMapView'
               options={{
                 headerTitle:'Map',
+                headerTitleStyle:{
+                  fontFamily: fonts.PoppinsMedium
+                }
+              }}
+            ></Stack.Screen>
+            <Stack.Screen 
+              component={SearchBus} 
+              name='SearchBus'
+              options={{
+                headerTitle:'Search Bus',
+                headerTitleStyle:{
+                  fontFamily: fonts.PoppinsMedium
+                }
+              }}
+            ></Stack.Screen>
+            <Stack.Screen 
+              component={CurrentLocationOfBus} 
+              name='CurrentLocationOfBus'
+              options={{
+                headerTitle:'Bus Location',
                 headerTitleStyle:{
                   fontFamily: fonts.PoppinsMedium
                 }

@@ -26,6 +26,7 @@ const CustomHeader = () => {
         <View style={styles.searchSection}>
             <Icons style={styles.searchIcon} name="search" size={20} color="#000"/>
             <TextInput
+            onPressIn={()=>navigation.navigate('SearchBus')}
             style={styles.input}
             onChangeText={(searchString) => {this.setState({searchString})}}
             underlineColorAndroid="transparent"
